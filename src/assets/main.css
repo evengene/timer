@@ -1,0 +1,63 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  --dark-blue: #1e213a;
+  --dark-blue-2: #100e1d;
+  --dark-blue-3: #252a41;
+  --dark-blue-4: #343b5c;
+  --dark-blue-5: #3c47e9;
+  --dark-blue-6: #1e213a;
+  --dark-blue-7: #3c47e9;
+  --dark-blue-8: #252a41;
+  --dark-blue-9: #252a41;
+  --dark-blue-10: #252a41;
+  --dark-blue-11: #252a41;
+  --dark-blue-12: #252a41;
+  --dark-blue-13: #252a41;
+  --dark-blue-14: #252a41;
+  --dark-blue-15: #252a41;
+  --dark-blue-16: #252a41;
+  --dark-blue-17: #252a41;
+  --dark-blue-18: #252a41;
+  --dark-blue-19: #252a41;
+  --dark-blue-20: #252a41;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--dark-blue);
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+@media (hover: hover) {
+  a:hover {}
+}
