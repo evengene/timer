@@ -11,29 +11,6 @@ a {
   text-decoration: none;
 }
 
-:root {
-  --dark-blue: #1e213a;
-  --dark-blue-2: #100e1d;
-  --dark-blue-3: #252a41;
-  --dark-blue-4: #343b5c;
-  --dark-blue-5: #3c47e9;
-  --dark-blue-6: #1e213a;
-  --dark-blue-7: #3c47e9;
-  --dark-blue-8: #252a41;
-  --dark-blue-9: #252a41;
-  --dark-blue-10: #252a41;
-  --dark-blue-11: #252a41;
-  --dark-blue-12: #252a41;
-  --dark-blue-13: #252a41;
-  --dark-blue-14: #252a41;
-  --dark-blue-15: #252a41;
-  --dark-blue-16: #252a41;
-  --dark-blue-17: #252a41;
-  --dark-blue-18: #252a41;
-  --dark-blue-19: #252a41;
-  --dark-blue-20: #252a41;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -41,13 +18,16 @@ a {
 }
 
 body {
-  background-color: var(--dark-blue);
-  font-family: "Montserrat", sans-serif;
-  color: #fff;
+  background-color: #008080; /* Teal, commonly used in older UIs */
+  font-family: "Courier New", Courier, monospace; /* Retro monospaced font */
+  color: #000000; /* Typically, text was black */
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  overflow: hidden; /* Optional: Prevents scrolling if the content fits the viewport */
 }
 
 main {

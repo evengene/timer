@@ -1,6 +1,7 @@
 # Timer
 
 A simple timer app built with Vue.js.
+![Preview](./timer-preview.png)
 
 ## Features
 

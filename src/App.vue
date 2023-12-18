@@ -1,5 +1,4 @@
 <script setup>
-// import HelloWorld from './components/HelloWorld.vue'
 import Timer   from '@/components/Timer.vue';
 </script>
 
@@ -11,6 +10,3 @@ import Timer   from '@/components/Timer.vue';
     <Timer />
   </main>
 </template>
-
-<style scoped>
-</style>

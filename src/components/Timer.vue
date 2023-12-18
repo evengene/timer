@@ -65,32 +65,47 @@ export default defineComponent({
 });
 </script>
 <template>
-  <div class="timer-wrapper"
-       :class="{'timer-wrapper--paused': isPaused,
+  <div class="computer-setup">
+    <div class="computer">
+      <div class="screen">
+        <div class="timer-wrapper"
+             :class="{'timer-wrapper--paused': isPaused,
        'timer-wrapper--finished': isFinished}"
-  >
-    <div class="timer">
-      <div class="timer__time">
-        <span class="timer__time__minutes">{{ minutes }}</span>
-        <span class="timer__time__colon">:</span>
-        <span class="timer__time__seconds">{{ seconds }}</span>
-      </div>
-      <div class="timer__controls">
-        <button
-          class="timer__controls__button"
-          @click="toggleTimer"
-          :disabled="isFinished"
         >
-          {{ isPaused ? 'Start' : 'Pause' }}
-        </button>
-        <button
-          class="timer__controls__button"
-          @click="resetTimer"
-          :disabled="isFinished"
-        >
-          Reset
-        </button>
+          <h5 class="title">
+            Timer
+          </h5>
+          <div class="timer">
+            <div class="timer__time">
+              <span class="timer__time__minutes">{{ minutes }}</span>
+              <span class="timer__time__colon">:</span>
+              <span class="timer__time__seconds">{{ seconds }}</span>
+            </div>
+            <div class="timer__controls">
+              <button
+                class="timer__controls__button"
+                @click="toggleTimer"
+                :disabled="isFinished"
+              >
+                {{ isPaused ? 'Start' : 'Pause' }}
+              </button>
+              <button
+                class="timer__controls__button"
+                @click="resetTimer"
+                :disabled="isFinished"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="disk-drive">
+      <div class="vents"></div>
+    </div>
+    <div class="mousepad">
+      <div class="mouse" @click="toggleTimer"></div>
     </div>
   </div>
 </template>
@@ -98,37 +113,54 @@ export default defineComponent({
 
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+.computer-setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-
-
-.timer-wrapper {
-  background-color: var(--dark-blue-2);
-  border-radius: 10px;
+.computer {
+  background-color: #c0c0c0;
+  border: 4px solid #ababab;
+  width: 500px;
   padding: 20px;
-  width: 400px;
-  height: 400px;
+  z-index: 2;
+}
+
+.screen {
+  background-color: #0000AA;
+  border: 4px inset #ffffff;
+  height: 300px;
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  transition: all 0.3s ease-in-out;
 }
 
-.timer-wrapper--paused {
-  background-color: var(--dark-blue-3);
+.title {
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
+.timer-wrapper {
+}
+
+.timer-wrapper {
+  text-align: center;
+}
+
+.timer-wrapper--paused,
 .timer-wrapper--finished {
-  background-color: var(--dark-blue-4);
 }
 
 .timer {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 20px;
+  font-size: 2em;
 }
 
 .timer__time {
@@ -136,18 +168,22 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  font-family: 'Courier New', monospace;
 }
 
 .timer__time__minutes,
 .timer__time__seconds {
   font-size: 100px;
-  font-weight: 600;
+  font-family: "Courier New", Courier, monospace;
+  color: #ffffff;
+  line-height: 1;
 }
 
 .timer__time__colon {
-  font-size: 100px;
-  font-weight: 600;
-  opacity: 0.5;
+  font-size: 50px;
+  color: #ffffff;
+  opacity: 0.7;
+  line-height: 1;
 }
 
 .timer__controls {
@@ -157,39 +193,128 @@ export default defineComponent({
 }
 
 .timer__controls__button {
-  background-color: var(--dark-blue-5);
+  background-color: #000080;
   padding: 10px 20px;
-  color: #fff;
-  border-radius: 10px;
-  border: none;
+  color: #ffffff;
+  border: 2px outset #ffffff;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: bold;
   margin: 0 10px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  font-family: "Courier New", Courier, monospace;
   outline: none;
 }
 
-// adjust border radius for all states if a button
-button.timer__controls__button,
-button.timer__controls__button:hover,
-button.timer__controls__button:focus,
 button.timer__controls__button:active {
-  border-radius: 10px;
-  border: none;
+  border-style: inset;
 }
 
 .timer__controls__button:hover {
-  background-color: var(--dark-blue-6);
+  background-color: #000099;
 }
 
 .timer__controls__button:disabled {
-  background-color: var(--dark-blue-7);
+  background-color: #808080;
   cursor: not-allowed;
 }
 
 .timer__controls__button:disabled:hover {
-  background-color: var(--dark-blue-8);
+  background-color: #808080;
+}
+
+.disk-drive {
+  background-color: #c0c0c0;
+  width: 600px;
+  height: 100px;
+  border: 3px solid #ababab;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 1;
+  margin-top: -2px;
+}
+
+.disk-drive::before {
+  border: 2px inset #ffffff;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 34px;
+  height: 4px;
+  background-color: #000000;
+  transform: translateY(-50%);
+  border-radius: 1px;
+}
+
+.disk-drive::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 10px;
+  height: 10px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ff0000;
+  transform: translateY(-50%);
+}
+
+.disk-drive .vents {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 50px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.disk-drive .vents::before,
+.disk-drive .vents::after {
+  content: '';
+  width: 100px;
+  height: 2px;
+  background-color: #000000;
+  border: 2px inset #ffffff;
+}
+
+.mousepad {
+  background-color: #000;
+  width: 120px;
+  height: 180px;
+  margin-top: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.mouse {
+  background-color: #c0c0c0;
+  width: 40px;
+  height: 60px;
+  border-radius: 30px 30px 40px 40px;
+  position: relative;
+  top: 60px;
+  left: 40px;
+  box-shadow: 0 4px 0 rgba(255, 255, 255, 0.2);
+}
+.mouse::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 10px;
+  height: 20px;
+  background-color: #808080;
+  border-radius: 10px;
+  transform: translateX(-50%);
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border: 2px inset #ffffff;
 }
 
 </style>
