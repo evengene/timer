@@ -6,38 +6,3 @@
   padding: 2rem;
   font-weight: normal;
 }
-
-a {
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: #008080; /* Teal, commonly used in older UIs */
-  font-family: "Courier New", Courier, monospace; /* Retro monospaced font */
-  color: #000000; /* Typically, text was black */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
-  overflow: hidden; /* Optional: Prevents scrolling if the content fits the viewport */
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-}
-@media (hover: hover) {
-  a:hover {}
-}

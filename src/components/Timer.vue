@@ -1,16 +1,24 @@
 <script lang="ts">
-import { defineComponent, ref, watch, onMounted } from 'vue';
+import { defineComponent, ref, watch, onMounted, computed } from 'vue';
 
 export default defineComponent({
   name: 'Timer',
   components: {
   },
   setup() {
-    const minutes = ref(0);
+    const minutes = ref(25);
     const seconds = ref(0);
     const isPaused = ref(true);
     const isFinished = ref(false);
     const timer = ref<number | null>(null);
+
+
+    const formattedMinutes = computed(() => doubleDigits(minutes.value));
+    const formattedSeconds = computed(() => doubleDigits(seconds.value));
+
+    function doubleDigits(value: number) {
+      return value.toString().length === 1 ? `0${value}` : value.toString();
+    }
 
     const toggleTimer = () => {
       isPaused.value = !isPaused.value;
@@ -19,7 +27,7 @@ export default defineComponent({
     const resetTimer = () => {
       isPaused.value = true;
       isFinished.value = false;
-      minutes.value = 0;
+      minutes.value = 1;
       seconds.value = 0;
     };
 
@@ -28,16 +36,17 @@ export default defineComponent({
         return;
       }
 
-      if (seconds.value === 59) {
-        seconds.value = 0;
-        minutes.value++;
+      if (seconds.value === 0) {
+        if (minutes.value === 0) {
+          isFinished.value = true;
+          isPaused.value = true;
+          return;
+        } else {
+          minutes.value--;
+          seconds.value = 59;
+        }
       } else {
-        seconds.value++;
-      }
-
-      if (minutes.value === 25) {
-        isFinished.value = true;
-        isPaused.value = true;
+        seconds.value--;
       }
     };
 
@@ -47,6 +56,9 @@ export default defineComponent({
       } else {
         clearInterval(timer.value)
       }
+      if (isFinished.value) {
+        alert('Time is up!');
+      }
     });
 
     onMounted(() => {
@@ -54,8 +66,8 @@ export default defineComponent({
     });
 
     return {
-      minutes,
-      seconds,
+      formattedMinutes,
+      formattedSeconds,
       isPaused,
       isFinished,
       toggleTimer,
@@ -77,9 +89,9 @@ export default defineComponent({
           </h5>
           <div class="timer">
             <div class="timer__time">
-              <span class="timer__time__minutes">{{ minutes }}</span>
+              <span class="timer__time__minutes">{{ formattedMinutes }}</span>
               <span class="timer__time__colon">:</span>
-              <span class="timer__time__seconds">{{ seconds }}</span>
+              <span class="timer__time__seconds">{{ formattedSeconds }}</span>
             </div>
             <div class="timer__controls">
               <button
