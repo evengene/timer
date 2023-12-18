@@ -27,7 +27,7 @@ export default defineComponent({
     const resetTimer = () => {
       isPaused.value = true;
       isFinished.value = false;
-      minutes.value = 1;
+      minutes.value = 25;
       seconds.value = 0;
     };
 
